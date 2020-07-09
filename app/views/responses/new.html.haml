@@ -1,1 +1,12 @@
-%h1 This is from response#new
+= form_for @response do |f|
+    %table.table
+        %tbody
+            - @questions.each do |question|
+                %tr
+                    %td= question.text
+                    %td
+                        - question.options.each do |option|
+                            = radio_button_tag(question.id, option.id)
+                            = label_tag(option.id, option.text.humanize)
+                    
+    = submit_tag('Submit', class: 'btn btn-success')
